@@ -5,10 +5,11 @@ const URI = process.env.MONGODB_URI as string;
 const DB_NAME = process.env.DB_NAME;
 let db: Db;
 
-async function connectToMongoDB() {
+async function connectToMongoDB(callback: () => void) {
   const client = new MongoClient(URI);
   await client.connect();
   console.log('mongdb connected');
+  callback();
   db = client.db(DB_NAME);
 }
 
