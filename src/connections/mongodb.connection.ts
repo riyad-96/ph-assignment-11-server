@@ -1,5 +1,6 @@
 // External imports
-import { Db, MongoClient } from 'mongodb';
+import { Collection, Db, MongoClient, Document } from 'mongodb';
+import { User } from '../controllers/user/UserTypes.js';
 
 const URI = process.env.MONGODB_URI as string;
 const DB_NAME = process.env.DB_NAME;
@@ -13,9 +14,11 @@ async function connectToMongoDB(callback: () => void) {
   db = client.db(DB_NAME);
 }
 
-function getDB() {
-  if (!db) throw new Error('Database not found');
-  return db;
+function getCollection<T extends Document>(name: string): Collection<T> {
+  if (!db) throw new Error('DB not initialized. Call connectToDB() first.');
+  return db.collection<T>(name);
 }
 
-export { connectToMongoDB, getDB };
+const usersCollection = () => getCollection<User>('users');
+
+export { connectToMongoDB, usersCollection };
