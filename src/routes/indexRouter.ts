@@ -6,6 +6,7 @@ import { adminRouter } from './admin.routes.js';
 
 const router = express.Router();
 
+router.get('/', (req, res) => res.send('server is running'));
 router.use('/user', userRouter);
 router.use('/admin', verifyFirebaseToken, verifyUserRole('admin'), adminRouter);
 
