@@ -1,7 +1,7 @@
 import type { Request, Response } from 'express';
 import { usersCollection } from '../../connections/mongodb.connection.js';
 
-async function getUser(req: Request, res: Response) {
+export default async function getUser(req: Request, res: Response) {
   try {
     const { email } = res.locals.tokenData;
 
@@ -22,5 +22,3 @@ async function getUser(req: Request, res: Response) {
     });
   }
 }
-
-export { getUser };

@@ -18,3 +18,8 @@ export type NewUser = {
   name: string;
   photoURL: string;
 };
+
+export type UpdateInfo = {
+  name: string;
+  photoURL: string;
+}

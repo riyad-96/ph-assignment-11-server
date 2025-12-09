@@ -3,7 +3,7 @@ import { usersCollection } from '../../connections/mongodb.connection.js';
 import admin from '../../utils/firebaseAdmin.util.js';
 import { User } from './UserTypes.js';
 
-async function socialLogin(req: Request, res: Response) {
+export default async function socialLogin(req: Request, res: Response) {
   try {
     const { uid, email } = res.locals.tokenData;
     const userColl = usersCollection();
@@ -37,5 +37,3 @@ async function socialLogin(req: Request, res: Response) {
     });
   }
 }
-
-export { socialLogin };

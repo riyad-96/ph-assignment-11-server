@@ -4,7 +4,7 @@ import { usersCollection } from '../../connections/mongodb.connection.js';
 import admin from '../../utils/firebaseAdmin.util.js';
 import { FirebaseError } from 'firebase-admin';
 
-async function createUser(req: Request, res: Response) {
+export default async function createUser(req: Request, res: Response) {
   try {
     const data: NewUser = req.body;
     // Check if required data is available
@@ -67,5 +67,3 @@ async function createUser(req: Request, res: Response) {
     });
   }
 }
-
-export { createUser };
