@@ -1,6 +1,7 @@
 // External imports
 import { Collection, Db, MongoClient, Document } from 'mongodb';
 import { User } from '../controllers/user/UserTypes.js';
+import { Ticket } from '../controllers/vendor/Types.js';
 
 const URI = process.env.MONGODB_URI as string;
 const DB_NAME = process.env.DB_NAME;
@@ -20,5 +21,6 @@ function getCollection<T extends Document>(name: string): Collection<T> {
 }
 
 const usersCollection = () => getCollection<User>('users');
+const ticketsCollection = () => getCollection<Ticket>('tickets');
 
-export { connectToMongoDB, usersCollection };
+export { connectToMongoDB, usersCollection, ticketsCollection };

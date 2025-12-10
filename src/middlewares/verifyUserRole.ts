@@ -15,7 +15,7 @@ export default function verifyUserRole(role: AllowedRoles) {
     } else {
       res.status(403).send({
         code: 'FORBIDDEN',
-        message: 'Requires administrator privileges.',
+        message: `Requires ${role} privileges.`,
       });
     }
   };
