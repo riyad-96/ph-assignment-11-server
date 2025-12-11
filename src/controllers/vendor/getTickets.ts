@@ -4,7 +4,7 @@ import { ticketsCollection } from '../../connections/mongodb.connection.js';
 export default async function getTickets(req: Request, res: Response) {
   try {
     const { email } = res.locals.tokenData;
-    const tickets = await ticketsCollection().find({ vendor_email: email }).toArray();
+    const tickets = await ticketsCollection().find({ vendor_email: email }).sort({ updated_at: -1 }).toArray();
     res.send(tickets);
   } catch (err) {
     console.error(err);

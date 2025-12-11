@@ -11,6 +11,7 @@ export default async function updateIsFraud(req: Request, res: Response) {
       {
         $set: {
           isFraud,
+          updated_at: new Date(),
         },
       },
     );

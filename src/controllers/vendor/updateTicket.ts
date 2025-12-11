@@ -8,10 +8,23 @@ export default async function updateTicket(req: Request, res: Response) {
     const { email } = res.locals.tokenData;
     const ticket: Ticket = req.body;
 
-    const requestTedTicket = await ticketsCollection().findOne({
+    const requestedTicket = await ticketsCollection().findOne({
       vendor_email: email,
       _id: new ObjectId(ticket._id),
     });
+
+    if (!requestedTicket) {
+      return res.status(404).send({
+        code: 'TICKET_NOT_FOUND',
+        message: 'Ticket not found for the vendor.',
+      });
+    }
+
+    if (requestedTicket.status === 'rejected')
+      return res.status(400).send({
+        code: 'TICKET_REJECTED',
+        message: 'Rejected tickets cannot be updated.',
+      });
 
     await ticketsCollection().findOneAndUpdate(
       {
@@ -26,7 +39,6 @@ export default async function updateTicket(req: Request, res: Response) {
           quantity: Math.floor(parseFloat(ticket.quantity as string)),
           departure_time: new Date(ticket.departure_time),
           perks: ticket.perks,
-          status: requestTedTicket?.status,
           thumbnail: ticket.thumbnail,
           title: ticket.title,
           transport: ticket.transport,

@@ -36,6 +36,7 @@ export default async function createTicket(req: Request, res: Response) {
       perks: ticket.perks || [],
       created_at: new Date(),
       updated_at: new Date(),
+      isOnAd: false,
     };
 
     await ticketsCollection().insertOne(newTicket);

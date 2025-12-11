@@ -16,4 +16,5 @@ export type Ticket = {
   perks: string[];
   created_at: Date | string | number;
   updated_at: Date | string | number;
+  isOnAd: boolean;
 };
