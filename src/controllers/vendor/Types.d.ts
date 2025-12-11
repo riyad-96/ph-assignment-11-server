@@ -14,4 +14,6 @@ export type Ticket = {
   quantity: number | string;
   departure_time: Date | string | number;
   perks: string[];
+  created_at: Date | string | number;
+  updated_at: Date | string | number;
 };

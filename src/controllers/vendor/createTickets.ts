@@ -33,7 +33,9 @@ export default async function createTicket(req: Request, res: Response) {
       price: parseFloat(ticket.price),
       quantity: Math.floor(parseFloat(ticket.quantity)),
       departure_time: new Date(ticket.departure_time),
-      perks: ticket.perks,
+      perks: ticket.perks || [],
+      created_at: new Date(),
+      updated_at: new Date(),
     };
 
     await ticketsCollection().insertOne(newTicket);

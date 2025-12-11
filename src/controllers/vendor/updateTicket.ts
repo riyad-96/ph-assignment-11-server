@@ -30,6 +30,7 @@ export default async function updateTicket(req: Request, res: Response) {
           thumbnail: ticket.thumbnail,
           title: ticket.title,
           transport: ticket.transport,
+          updated_at: new Date(),
         },
       },
     );
