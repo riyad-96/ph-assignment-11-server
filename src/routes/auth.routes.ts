@@ -3,10 +3,10 @@ import express from 'express';
 
 // Local imports
 import verifyFirebaseToken from '../middlewares/verifyFirebaseToken.js';
-import getUser from '../controllers/user/getUser.js';
-import createUser from '../controllers/user/createUser.js';
-import socialLogin from '../controllers/user/socialLogin.js';
-import updateProfile from '../controllers/user/updateProfile.js';
+import getUser from '../controllers/auth/getUser.js';
+import createUser from '../controllers/auth/createUser.js';
+import socialLogin from '../controllers/auth/socialLogin.js';
+import updateProfile from '../controllers/auth/updateProfile.js';
 
 const router = express.Router();
 
