@@ -15,4 +15,6 @@ router.post('/create', createUser);
 router.post('/sociallogin', verifyFirebaseToken, socialLogin);
 router.post('/update', verifyFirebaseToken, updateProfile);
 
-export { router as userRouter };
+// home routes
+
+export { router as authRouter };

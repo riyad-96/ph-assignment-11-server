@@ -1,5 +1,7 @@
 // External imports
 import express from 'express';
+
+// Local imports
 import createTicket from '../controllers/vendor/createTickets.js';
 import getTickets from '../controllers/vendor/getTickets.js';
 import updateTicket from '../controllers/vendor/updateTicket.js';
