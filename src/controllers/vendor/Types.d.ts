@@ -10,8 +10,8 @@ export type Ticket = {
   from: string;
   to: string;
   transport: string;
-  price: number | string;
-  quantity: number | string;
+  price: number;
+  quantity: number;
   departure_time: Date | string | number;
   perks: string[];
   created_at: Date | string | number;

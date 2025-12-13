@@ -1,12 +1,11 @@
 import type { Request, Response } from 'express';
 import { ticketsCollection } from '../../connections/mongodb.connection.js';
-import { Ticket } from './Types.js';
 import { ObjectId } from 'mongodb';
 
 export default async function updateTicket(req: Request, res: Response) {
   try {
     const { email } = res.locals.tokenData;
-    const ticket: Ticket = req.body;
+    const ticket = req.body;
 
     const requestedTicket = await ticketsCollection().findOne({
       vendor_email: email,
