@@ -10,7 +10,10 @@ export default async function getBookedTickets(req: Request, res: Response) {
     const { email } = res.locals.tokenData;
 
     // get all the bookings
-    const bookings = await bookingsCollection().find({ vendor_email: email }).toArray();
+    const bookings = await bookingsCollection()
+      .find({ vendor_email: email })
+      .sort({ created_at: -1 })
+      .toArray();
     if (bookings.length < 1) return res.send([]);
 
     // get all ticket linked with each booking
@@ -37,11 +40,11 @@ export default async function getBookedTickets(req: Request, res: Response) {
         quantity: b.quantity,
         total_price: b.quantity * (ticket?.price as number),
         created_at: b.created_at,
+        departure_time: ticket?.departure_time,
         status: b.status,
       };
       return bookedTicket;
     });
-    console.log(sanitizedVendorBookedTickets);
     res.send(sanitizedVendorBookedTickets);
   } catch (err) {
     console.error(err);

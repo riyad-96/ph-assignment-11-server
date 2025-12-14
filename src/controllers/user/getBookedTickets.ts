@@ -5,7 +5,7 @@ export default async function getBookedTickets(req: Request, res: Response) {
   try {
     const { email } = res.locals.tokenData;
     // get all the bookings
-    const bookings = await bookingsCollection().find({ user_email: email }).toArray();
+    const bookings = await bookingsCollection().find({ user_email: email }).sort({ created_at: -1 }).toArray();
     if (bookings.length < 1) res.send([]);
 
     // get all ticket liked with each booking

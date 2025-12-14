@@ -26,6 +26,7 @@ export type BookedTicket = {
   title: string;
   quantity: number;
   total_price: number;
+  departure_time: string | number | Date;
   created_at: string | number | Date;
   status: 'pending' | 'accepted' | 'rejected' | 'paid';
 };

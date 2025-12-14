@@ -2,7 +2,7 @@
 import { Collection, Db, MongoClient, Document } from 'mongodb';
 import { User } from '../controllers/auth/UserTypes.js';
 import { Ticket } from '../controllers/vendor/Types.js';
-import { Booking } from '../controllers/user/types.js';
+import { Booking, Transaction } from '../controllers/user/types.js';
 
 const URI = process.env.MONGODB_URI as string;
 const DB_NAME = process.env.DB_NAME;
@@ -24,5 +24,6 @@ function getCollection<T extends Document>(name: string): Collection<T> {
 const usersCollection = () => getCollection<User>('users');
 const ticketsCollection = () => getCollection<Ticket>('tickets');
 const bookingsCollection = () => getCollection<Booking>('bookings');
+const transactionsCollection = () => getCollection<Transaction>('transactions');
 
-export { connectToMongoDB, usersCollection, ticketsCollection, bookingsCollection };
+export { connectToMongoDB, usersCollection, ticketsCollection, bookingsCollection, transactionsCollection };

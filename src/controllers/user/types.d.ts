@@ -1,7 +1,7 @@
 import { ObjectId } from "mongodb"
 
 export type Booking = {
-  _id?: string | ObjectId;
+  _id?: ObjectId;
   user_email: string;
   vendor_email: string;
   ticket_id: ObjectId;
@@ -11,7 +11,7 @@ export type Booking = {
 }
 
 export type BookedTicket= {
-  _id?: string;
+  _id?: ObjectId;
   title: string;
   thumbnail: string;
   from: string;
@@ -21,4 +21,16 @@ export type BookedTicket= {
   total_price: number;
   departure_time: string | number | Date;
   status: 'pending' | 'accepted' | 'rejected' | 'paid';
+}
+
+export type Transaction = {
+  _id?: ObjectId;
+  transaction_id: string;
+  amount: number;
+  created_at: Date | number | string;
+  session_id: string;
+  ticket_id: ObjectId;
+  booking_id: ObjectId;
+  user_email: string;
+  vendor_email: string;
 }
