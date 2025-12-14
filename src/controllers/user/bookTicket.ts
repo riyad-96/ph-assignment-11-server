@@ -8,7 +8,10 @@ export default async function bookTicket(req: Request, res: Response) {
     const { email } = res.locals.tokenData;
     const { quantity, ticket_id } = req.body;
 
-    if(Number(quantity) < 1) return res.status(400).send({code: 'INVALID_QUANTITY', message: 'User must book at least 1 ticket'});
+    if (Number(quantity) < 1)
+      return res
+        .status(400)
+        .send({ code: 'INVALID_QUANTITY', message: 'User must book at least 1 ticket' });
 
     const requestedTicket = await ticketsCollection().findOne({ _id: new ObjectId(ticket_id) });
     if (!requestedTicket)
@@ -25,6 +28,7 @@ export default async function bookTicket(req: Request, res: Response) {
     // book users ticket
     const bookingResponse = await bookingsCollection().insertOne({
       user_email: email,
+      vendor_email: requestedTicket.vendor_email,
       ticket_id: new ObjectId(ticket_id),
       quantity: Number(quantity),
       created_at: new Date(),
