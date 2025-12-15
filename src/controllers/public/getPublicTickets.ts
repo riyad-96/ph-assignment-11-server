@@ -10,6 +10,7 @@ export default async function getPublicTickets(req: Request, res: Response) {
       .toArray();
 
     const fraudFilteredTickets = await getFraudFilteredTickets(approvedTickets);
+    console.log(fraudFilteredTickets)
 
     const finalData = {
       advertised: fraudFilteredTickets.filter((t) => t.isOnAd),

@@ -15,7 +15,6 @@ export default async function updateIsFraud(req: Request, res: Response) {
           updated_at: new Date(),
         },
       },
-      { returnDocument: 'after' },
     );
 
     if (isFraud) {
