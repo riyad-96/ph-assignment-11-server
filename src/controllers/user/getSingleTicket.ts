@@ -5,7 +5,7 @@ import { ObjectId } from 'mongodb';
 export default async function getSingleTicket(req: Request, res: Response) {
   try {
     const { id } = req.params;
-    const ticket = await ticketsCollection().findOne({ _id: new ObjectId(id) });
+    const ticket = await ticketsCollection().findOne({ _id: new ObjectId(id), isFraud: false });
 
     res.send(ticket);
   } catch (err) {

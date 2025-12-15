@@ -19,10 +19,20 @@ export default async function updateIsFraud(req: Request, res: Response) {
 
     if (isFraud) {
       await ticketsCollection().updateMany(
-        { vendor_email: vendor?.email, isOnAd: true },
+        { vendor_email: vendor?.email },
         {
           $set: {
             isOnAd: false,
+            isFraud: true,
+          },
+        },
+      );
+    } else {
+      await ticketsCollection().updateMany(
+        { vendor_email: vendor?.email, isFraud: true },
+        {
+          $set: {
+            isFraud: false,
           },
         },
       );

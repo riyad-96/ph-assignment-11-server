@@ -1,4 +1,4 @@
-import { ObjectId } from "mongodb"
+import { ObjectId } from 'mongodb';
 
 export type Booking = {
   _id?: ObjectId;
@@ -8,9 +8,9 @@ export type Booking = {
   quantity: number;
   status: 'pending' | 'accepted' | 'rejected' | 'paid';
   created_at: Date | number | string;
-}
+};
 
-export type BookedTicket= {
+export type BookedTicket = {
   _id?: ObjectId;
   title: string;
   thumbnail: string;
@@ -21,7 +21,7 @@ export type BookedTicket= {
   total_price: number;
   departure_time: string | number | Date;
   status: 'pending' | 'accepted' | 'rejected' | 'paid';
-}
+};
 
 export type Transaction = {
   _id?: ObjectId;
@@ -33,4 +33,15 @@ export type Transaction = {
   booking_id: ObjectId;
   user_email: string;
   vendor_email: string;
-}
+};
+
+export type PriceSort = 'low-high' | 'high-low' | 'none';
+export type Transports = 'all' |'bus' | 'train' | 'ship' | 'plane';
+
+export type FilterParams = {
+  searchQuery: string;
+  transportType: Transports;
+  priceSort: PriceSort;
+  page: string;
+  limit: string;
+};

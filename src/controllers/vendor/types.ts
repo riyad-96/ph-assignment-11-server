@@ -17,6 +17,7 @@ export type Ticket = {
   created_at: Date | string | number;
   updated_at: Date | string | number;
   isOnAd: boolean;
+  isFraud: boolean;
 };
 
 export type BookedTicket = {

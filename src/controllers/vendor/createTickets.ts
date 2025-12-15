@@ -37,6 +37,7 @@ export default async function createTicket(req: Request, res: Response) {
       created_at: new Date(),
       updated_at: new Date(),
       isOnAd: false,
+      isFraud: false,
     };
 
     await ticketsCollection().insertOne(newTicket);
