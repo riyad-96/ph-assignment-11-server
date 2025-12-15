@@ -8,14 +8,16 @@ import updateTicket from '../controllers/vendor/updateTicket.js';
 import deleteTicket from '../controllers/vendor/deleteTicket.js';
 import getBookedTickets from '../controllers/vendor/getBookedTickets.js';
 import updateBookedTicketStatus from '../controllers/vendor/updateBookedTicketStatus.js';
+import getRevenueOverview from '../controllers/vendor/getRevenueOverview.js';
 
-const route = express.Router();
+const router = express.Router();
 
-route.post('/create-ticket', createTicket);
-route.get('/tickets', getTickets);
-route.patch('/update-ticket', updateTicket);
-route.delete('/delete-ticket/:ticketId', deleteTicket);
-route.get('/booked-tickets', getBookedTickets);
-route.patch('/udpate-booked-ticket-status', updateBookedTicketStatus)
+router.post('/create-ticket', createTicket);
+router.get('/tickets', getTickets);
+router.patch('/update-ticket', updateTicket);
+router.delete('/delete-ticket/:ticketId', deleteTicket);
+router.get('/booked-tickets', getBookedTickets);
+router.patch('/udpate-booked-ticket-status', updateBookedTicketStatus);
+router.get('/revenue', getRevenueOverview);
 
-export { route as vendorRouter };
+export { router as vendorRouter };

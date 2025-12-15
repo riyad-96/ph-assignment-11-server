@@ -1,5 +1,6 @@
 import { Request, Response } from 'express';
 import { ticketsCollection } from '../../connections/mongodb.connection.js';
+import getFraudFilteredTickets from '../../utils/filterFraudTickets.js';
 
 export default async function getPublicTickets(req: Request, res: Response) {
   try {
@@ -8,9 +9,11 @@ export default async function getPublicTickets(req: Request, res: Response) {
       .sort({ created_at: -1 })
       .toArray();
 
+    const fraudFilteredTickets = await getFraudFilteredTickets(approvedTickets);
+
     const finalData = {
-      advertised: approvedTickets.filter((t) => t.isOnAd),
-      regular: approvedTickets.slice(0, 9),
+      advertised: fraudFilteredTickets.filter((t) => t.isOnAd),
+      regular: fraudFilteredTickets.slice(0, 9),
     };
 
     res.send(finalData);

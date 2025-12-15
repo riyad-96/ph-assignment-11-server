@@ -6,9 +6,12 @@ type AllowedRoles = 'user' | 'vendor' | 'admin';
 export default function verifyUserRole(role: AllowedRoles) {
   return async (req: Request, res: Response, next: NextFunction) => {
     const { email } = res.locals.tokenData;
-    
+
     const userColl = usersCollection();
     const user = await userColl.findOne({ email });
+
+    if (user?.role === 'vendor' && user.isFraud)
+      return res.status(403).send({ code: 'FRAUD', message: 'Your account is suspended.' });
 
     if (user?.role === role) {
       next();

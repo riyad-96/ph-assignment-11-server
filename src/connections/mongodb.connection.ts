@@ -1,7 +1,7 @@
 // External imports
 import { Collection, Db, MongoClient, Document } from 'mongodb';
 import { User } from '../controllers/auth/UserTypes.js';
-import { Ticket } from '../controllers/vendor/Types.js';
+import { Ticket } from '../controllers/vendor/types.js';
 import { Booking, Transaction } from '../controllers/user/types.js';
 
 const URI = process.env.MONGODB_URI as string;
