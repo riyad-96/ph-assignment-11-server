@@ -1,6 +1,6 @@
 import type { Request, Response } from 'express';
 import { ticketsCollection, usersCollection } from '../../connections/mongodb.connection.js';
-import type { Ticket } from './types.js';
+import type { Ticket } from './types.d.js';
 
 export default async function createTicket(req: Request, res: Response) {
   try {

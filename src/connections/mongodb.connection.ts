@@ -1,6 +1,6 @@
 // External imports
 import { Collection, Db, MongoClient, Document } from 'mongodb';
-import { User } from '../controllers/auth/UserTypes.js';
+import { User } from '../controllers/auth/types.js';
 import type { Ticket } from '../controllers/vendor/types.js';
 import type { Booking, Transaction } from '../controllers/user/types.js';
 

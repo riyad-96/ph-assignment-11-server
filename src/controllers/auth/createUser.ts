@@ -1,5 +1,5 @@
 import type { Request, Response } from 'express';
-import { NewUser, User } from './UserTypes.js';
+import { NewUser, User } from './types.d.js';
 import { usersCollection } from '../../connections/mongodb.connection.js';
 import admin from '../../utils/firebaseAdmin.util.js';
 import { FirebaseError } from 'firebase-admin';
