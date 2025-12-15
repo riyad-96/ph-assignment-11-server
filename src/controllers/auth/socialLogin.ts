@@ -1,7 +1,7 @@
 import type { Request, Response } from 'express';
 import { usersCollection } from '../../connections/mongodb.connection.js';
 import admin from '../../utils/firebaseAdmin.util.js';
-import { User } from './types.d.js';
+import { User } from './types.js';
 
 export default async function socialLogin(req: Request, res: Response) {
   try {

@@ -1,6 +1,6 @@
 import admin from '../../utils/firebaseAdmin.util.js';
 import type { Request, Response } from 'express';
-import type { UpdateInfo } from './types.d.js';
+import type { UpdateInfo } from './types.js';
 import { usersCollection } from '../../connections/mongodb.connection.js';
 
 async function updateProfile(req: Request, res: Response) {

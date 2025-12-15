@@ -1,6 +1,6 @@
 import type { Request, Response } from 'express';
 import { ticketsCollection, bookingsCollection } from '../../connections/mongodb.connection.js';
-import { KPIDataArray, KPIDataRaw } from './types.d.js';
+import { KPIDataArray, KPIDataRaw } from './types.js';
 
 
 export default async function getRevenueOverview(req: Request, res: Response) {

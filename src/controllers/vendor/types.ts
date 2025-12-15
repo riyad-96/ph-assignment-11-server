@@ -46,8 +46,3 @@ export type KPIDataRaw = {
   sales_percentage: number;
   average_ticket_price: number;
 };
-
-export type VendorRevenueDataType = {
-  pie_chart: PieChartDataType[];
-  kpi_display: KPIDataType;
-};

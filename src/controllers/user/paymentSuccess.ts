@@ -6,7 +6,7 @@ import {
   ticketsCollection,
   transactionsCollection,
 } from '../../connections/mongodb.connection.js';
-import type { Transaction } from './types.d.js';
+import type { Transaction } from './types.js';
 
 export default async function paymentSuccess(req: Request, res: Response) {
   try {
