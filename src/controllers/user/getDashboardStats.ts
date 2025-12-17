@@ -38,22 +38,22 @@ export default async function getDashboardStats(req: Request, res: Response) {
 
     const lastSevenDays = getLastSevenDays();
     const lastSevenDaysExpenseStats = lastSevenDays.map((d) => {
-      const data = lastSeventDaysTransactions.find(
-        ({ created_at }) => format(created_at, 'dd MMM') === d,
+      const transactions = lastSeventDaysTransactions.filter(
+        ({ created_at }) => format(created_at, 'dd-MMM-y') === d,
       );
 
       return {
-        name: d,
-        value: data ? data.amount : 0,
+        name: d.split(`-${format(new Date(), 'y')}`)[0],
+        value: transactions.reduce((prev, { amount }) => prev + amount, 0),
       };
     });
 
     res.send({
       total_bookings: bookings.length,
-      booking_stat: bookingStats,
+      booking_stats: bookingStats,
       total_transactions: transactions.length,
       last_seven_days_expense: lastSevenDaysExpenseStats.reduce((prev, t) => prev + t.value, 0),
-      expense_stat: lastSevenDaysExpenseStats,
+      expense_stats: lastSevenDaysExpenseStats,
     });
   } catch (err) {
     console.error(err);
