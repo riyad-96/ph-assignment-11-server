@@ -9,6 +9,7 @@ import getTickets from '../controllers/admin/getTickets.js';
 import updateTicketStatus from '../controllers/admin/updateTicketStatus.js';
 import getApprovedTickets from '../controllers/admin/getApprovedTickets.js';
 import advertiseTickets from '../controllers/admin/advertiseTickets.js';
+import getAdminDashboardStats from '../controllers/admin/getAdminDashboardStats.js';
 
 const router = express.Router();
 
@@ -19,5 +20,6 @@ router.patch('/update-role', updateRole);
 router.patch('/update-is-fraud', updateIsFraud);
 router.patch('/update-ticket-status', updateTicketStatus);
 router.patch('/advertise-tickets', advertiseTickets);
+router.get('/dashboard-stats', getAdminDashboardStats);
 
 export { router as adminRouter };
